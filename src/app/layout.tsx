@@ -1,0 +1,98 @@
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import type { Metadata, Viewport } from 'next'
+
+import Footer from '@/components/layout/Footer'
+import Nav from '@/components/layout/Nav'
+import MotionProvider from '@/components/ui/MotionProvider'
+import {
+  SITE_DESCRIPTION,
+  SITE_EMAIL,
+  SITE_GITHUB,
+  SITE_LINKEDIN,
+  SITE_NAME,
+  SITE_URL,
+} from '@/lib/constants'
+import { dmSerifDisplay, ibmPlexMono } from '@/lib/fonts'
+
+import './globals.css'
+
+export const metadata: Metadata = {
+  title: SITE_NAME,
+  description: SITE_DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: SITE_URL,
+  },
+  openGraph: {
+    title: SITE_NAME,
+    description: 'CS + Mathematics @ UMD. Incoming Quant Trader at IMC Trading.',
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    images: [{ url: '/opengraph-image', width: 1200, height: 630 }],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SITE_NAME,
+    images: ['/opengraph-image'],
+  },
+  robots: { index: true, follow: true },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#F5EFE3',
+}
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE_NAME,
+  url: SITE_URL,
+  email: SITE_EMAIL,
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'University of Maryland, College Park',
+  },
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Apex Fund',
+  },
+  sameAs: [SITE_LINKEDIN, SITE_GITHUB],
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="en" className={`${dmSerifDisplay.variable} ${ibmPlexMono.variable}`}>
+      <body className="min-h-screen bg-paper font-mono text-ink antialiased">
+        <a
+          href="#content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:border focus:border-ink-line focus:bg-paper focus:px-4 focus:py-2 focus:text-label focus:uppercase focus:tracking-widest focus:text-ink"
+        >
+          Skip to content
+        </a>
+
+        <Nav />
+
+        <MotionProvider>{children}</MotionProvider>
+
+        <Footer />
+        <Analytics />
+        <SpeedInsights />
+
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </body>
+    </html>
+  )
+}

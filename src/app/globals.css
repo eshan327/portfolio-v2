@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f5efe3;
+  --color-paper-surface: #ede5d6;
+  --color-ink: #1a1510;
+  --color-ink-muted: #736352;
+  --color-ink-line: #d9cebc;
+  --color-accent: #b5702e;
+
+  --font-serif: var(--font-dm-serif-display), Georgia, serif;
+  --font-mono: var(--font-ibm-plex-mono), Menlo, monospace;
+
+  --text-tag: 10px;
+  --text-label: 11px;
+  --text-body-sm: 12px;
+  --text-body-xs: 12.5px;
+  --text-body: 13px;
+  --text-body-md: 14px;
+  --text-display-sm: 22px;
+  --text-display-md: 28px;
+
+  --text-fluid-tagline: clamp(22px, 2.5vw, 30px);
+  --text-fluid-hero: clamp(80px, 11vw, 160px);
+  --text-fluid-contact: clamp(56px, 8vw, 112px);
+
+  --spacing-section-y: 88px;
+  --spacing-skills-cat: 100px;
+  --spacing-skills-max: 860px;
+
+  --duration-fast: 200ms;
+  --duration-reveal: 650ms;
+  --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scrollbar-gutter: stable;
+  background-color: var(--color-paper);
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('/noise.png');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.045;
+  pointer-events: none;
+  z-index: 9000;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-paper), 0 0 0 4px var(--color-accent);
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  color: var(--color-ink);
+}
+
+@media print {
+  nav,
+  footer {
+    display: none;
+  }
+
+  body::before {
+    display: none;
+  }
+
+  body,
+  .hero,
+  .section,
+  #contact {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .text-accent,
+  em {
+    color: #000000 !important;
+    font-style: italic;
+  }
+
+  .hero-top,
+  .exp-item,
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .section,
+  #contact {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .exp-item,
+  .proj-card {
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    widows: 3;
+    orphans: 3;
+  }
+
+  nav {
+    backdrop-filter: none;
+  }
+
+  .hero {
+    min-height: unset;
+    padding-top: 40px;
+  }
+}
