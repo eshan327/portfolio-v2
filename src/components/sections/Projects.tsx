@@ -1,25 +1,28 @@
 import FadeIn from '@/components/ui/FadeIn'
+import LinkActions from '@/components/ui/LinkActions'
 import MetricDisplay from '@/components/ui/MetricDisplay'
 import SectionHeader from '@/components/ui/SectionHeader'
 import Tag from '@/components/ui/Tag'
 import { PROJECTS } from '@/data/projects'
+import { getSectionConfig } from '@/lib/sections'
 
 export default function Projects() {
+  const section = getSectionConfig('projects')
+
   return (
     <FadeIn>
-      <section id="projects" aria-label="Selected Projects" className="section px-7 py-section-y md:px-14">
-        <SectionHeader number="03" label="Selected Projects" />
+      <section id={section.id} aria-label={section.ariaLabel} className="section px-7 py-section-y md:px-14">
+        <SectionHeader number={section.number} label={section.headerLabel} />
 
-        <ul className="projects-grid grid border border-ink-line md:grid-cols-3" aria-label="Project cards">
-          {PROJECTS.map((project, index) => {
-            const isLast = index === PROJECTS.length - 1
-
+        <ul
+          className="projects-grid grid gap-px overflow-hidden border border-ink-line bg-ink-line md:grid-cols-2 xl:grid-cols-3"
+          aria-label="Project cards"
+        >
+          {PROJECTS.map(project => {
             return (
               <li
                 key={project.index}
-                className={`proj-card flex h-full flex-col p-10 transition-colors duration-fast hover:bg-paper-surface ${
-                  isLast ? 'md:border-r-0' : 'md:border-r md:border-ink-line'
-                } ${isLast ? '' : 'border-b border-ink-line md:border-b-0'}`}
+                className="proj-card flex h-full flex-col bg-paper p-10 transition-colors duration-fast hover:bg-paper-surface"
               >
                 <article className="flex h-full flex-col">
                   <p className="text-label font-mono uppercase tracking-widest text-accent">
@@ -47,6 +50,12 @@ export default function Projects() {
                         <Tag key={`${project.index}-${tech}`} label={tech} />
                       ))}
                     </div>
+
+                    <LinkActions
+                      links={project.links}
+                      isInProgress={project.isInProgress}
+                      keyPrefix={project.index}
+                    />
                   </div>
                 </article>
               </li>

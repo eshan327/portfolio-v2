@@ -3,38 +3,67 @@ import type { Project } from '@/types'
 export const PROJECTS: Project[] = [
   {
     index: '01',
-    nameLines: ['Auditory', 'Intent', 'Classifier'],
+    nameLines: ['Kalshi', 'Crypto', 'Pricing Bot'],
     italicLine: 1,
     description:
-      'Built an end-to-end pipeline classifying expressive intent from nonverbal vocalizations for autism research. Engineered feature extraction and model training over 7,000+ samples with PyTorch and Librosa.',
+      'Built a modular statistical-arbitrage runtime for Kalshi 15-minute BTC and ETH contracts, blending synthetic index feeds with live orderbook microstructure signals in a single dashboard stack.',
     metric: {
-      value: '1st',
-      label: 'UMD ML Competition, 500+ participants · 95% F1-score with vision transformers',
+      value: '5',
+      label: 'exchange feeds fused into deterministic state: Coinbase, Kraken, Gemini, Bitstamp, and Paxos',
     },
-    stack: ['PyTorch', 'Scikit-learn', 'Librosa', 'Keras'],
+    stack: ['Python', 'Flask', 'WebSocket', 'Kalshi API'],
+    links: [{ label: 'GitHub', href: 'https://github.com/eshan327/kalshi-arb' }],
   },
   {
     index: '02',
-    nameLines: ['Poisson', 'Disk', 'Sequences'],
+    nameLines: ['Auditory', 'Intent', 'Classifier'],
     italicLine: 1,
     description:
-      "Implemented Bridson's Poisson-disk sampling in Rust for distance-constrained 2D generation. Optimized spatial grids for near-linear runtime and compiled to WebAssembly for interactive in-browser visualization.",
+      'Trained intent classifiers on ReCANVo nonverbal vocalizations with a full audio pipeline spanning denoising, MFCC and entropy features, and spectrogram-based modeling.',
     metric: {
-      value: '<3s',
-      label: 'WebAssembly in-browser render · near-linear runtime with optimized spatial grids',
+      value: '1st',
+      label: 'UMD ML competition finish out of 500+ participants over 7,000+ labeled audio samples',
     },
-    stack: ['Rust', 'WebAssembly'],
+    stack: ['PyTorch', 'Scikit-learn', 'Librosa', 'Polars'],
+    links: [{ label: 'Website', href: 'https://learningtheunspoken.github.io' }],
   },
   {
     index: '03',
-    nameLines: ['Palette', 'Canvas', 'AI'],
+    nameLines: ['Cont-Kukanov', 'SOR', 'Backtester'],
+    italicLine: 0,
+    description:
+      'Implemented a Kafka-driven smart order router backtesting system with the Cont-Kukanov cost model, then benchmarked allocator behavior against Best Ask, TWAP, and VWAP execution baselines.',
+    metric: {
+      value: '4',
+      label: 'strategies evaluated with reproducible grid-search tuning over queue and fill penalties',
+    },
+    stack: ['Python', 'Kafka', 'EC2'],
+    links: [{ label: 'GitHub', href: 'https://github.com/eshan327/Cont-Kukanov-SOR' }],
+  },
+  {
+    index: '04',
+    nameLines: ['Poisson', 'Disk', 'Sequences'],
     italicLine: 1,
     description:
-      'Built a Chrome extension that delivers academic insights inside Canvas LMS using a local LLM pipeline. Designed a privacy-first architecture where all analysis runs on-device.',
+      "Implemented Bridson's Poisson-disk sampling in Rust with 2D and 3D controls, then compiled to WebAssembly for interactive distance-constrained generation directly in the browser.",
     metric: {
-      value: '100+',
-      label: 'active student users · zero server-side data processing by design',
+      value: '<3s',
+      label: 'interactive browser render times with optimized spatial-grid lookups',
     },
-    stack: ['React', 'Node.js', 'Docker'],
+    stack: ['Rust', 'WebAssembly'],
+    links: [{ label: 'GitHub', href: 'https://github.com/eshan327/Poisson-Disk-Sequences' }],
+  },
+  {
+    index: '05',
+    nameLines: ['Grocery', 'Zone'],
+    italicLine: 1,
+    description:
+      'Built a Django and PostgreSQL grocery platform with geolocation-powered store discovery, map-centric browsing, and wishlist-driven purchase planning for local shopping workflows.',
+    metric: {
+      value: 'Mapbox',
+      label: 'geospatial store browsing and discovery integrated into the shopping flow',
+    },
+    stack: ['Django', 'PostgreSQL', 'Mapbox', 'JavaScript'],
+    links: [{ label: 'GitHub', href: 'https://github.com/eshan327/GroceryZone' }],
   },
 ]

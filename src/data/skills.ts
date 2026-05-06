@@ -15,11 +15,11 @@ export const SKILLS: SkillRow[] = [
   },
   {
     category: 'Infrastructure',
-    skills: 'AWS, Docker, Kubernetes, Linux/Unix, Git, Maven',
+    skills: 'AWS, Docker, Kubernetes, Linux/Unix, Git, Maven, Jira, Figma',
   },
   {
     category: 'Coursework',
     skills:
-      'Machine Learning, Compilers, Computer Systems, Algorithms, Real Analysis, Linear Algebra, Data Science, Statistics',
+      'Machine Learning, Compilers, Computer Systems, Data Structures, Algorithms, Functional Programming, Object-Oriented Programming, Real Analysis, Linear Algebra, Data Science, Statistics',
   },
 ]

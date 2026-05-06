@@ -1,25 +1,10 @@
-import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor, within } from '../test-utils'
 import userEvent from '@testing-library/user-event'
 import { act } from 'react'
 
-import Nav from '../src/components/layout/Nav'
-
-class MockIntersectionObserver implements IntersectionObserver {
-  readonly root = null
-  readonly rootMargin = ''
-  readonly thresholds = []
-
-  constructor(_callback: IntersectionObserverCallback) {}
-
-  disconnect = vi.fn()
-  observe = vi.fn()
-  takeRecords = vi.fn(() => [])
-  unobserve = vi.fn()
-}
+import Nav from '@/components/layout/Nav'
 
 beforeAll(() => {
-  vi.stubGlobal('IntersectionObserver', MockIntersectionObserver)
-
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: vi.fn().mockImplementation((query: string): MediaQueryList => {

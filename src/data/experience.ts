@@ -8,7 +8,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     dateRange: 'Jun. 2026 – Aug. 2026',
     badge: 'Incoming',
     bullets: [
-      "Incoming to IMC's Chicago trading floor in Summer 2026 to build derivatives market-making and quantitative signal tooling.",
+      "Joining IMC's Chicago trading floor to build derivatives market-making systems and quantitative signal tooling.",
     ],
   },
   {

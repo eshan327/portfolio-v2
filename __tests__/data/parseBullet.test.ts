@@ -1,5 +1,5 @@
-import { parseBullet } from '../src/lib/parseBullet'
-import { EXPERIENCE } from '../src/data/experience'
+import { EXPERIENCE } from '@/data/experience'
+import { parseBullet } from '@/lib/parseBullet'
 
 describe('parseBullet', () => {
   it('returns a single plain segment for a string with no tags', () => {

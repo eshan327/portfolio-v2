@@ -1,143 +1,30 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback } from 'react'
 
-import type { NavLink } from '@/types'
-
-const NAV_LINKS: NavLink[] = [
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
-]
+import { useActiveSection } from '@/hooks/useActiveSection'
+import { useMobileMenu } from '@/hooks/useMobileMenu'
+import { NAV_LINKS } from '@/lib/sections'
 
 export default function Nav() {
-  const [activeSection, setActiveSection] = useState('')
-  const [menuOpen, setMenuOpen] = useState(false)
-  const firstMobileLinkRef = useRef<HTMLAnchorElement>(null)
-  const menuButtonRef = useRef<HTMLButtonElement>(null)
-  const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const {
+    menuOpen,
+    toggleMenu,
+    closeMenu,
+    firstMobileLinkRef,
+    menuButtonRef,
+    mobileMenuRef,
+  } = useMobileMenu()
+  const { activeSection, setActiveSection } = useActiveSection({
+    links: NAV_LINKS,
+    onHashChange: closeMenu,
+  })
 
-  const closeMenu = useCallback((restoreFocus = false) => {
-    setMenuOpen(false)
-
-    if (restoreFocus) {
-      queueMicrotask(() => menuButtonRef.current?.focus())
-    }
-  }, [])
-
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [menuOpen])
-
-  useEffect(() => {
-    if (!menuOpen) {
-      return
-    }
-
-    queueMicrotask(() => firstMobileLinkRef.current?.focus())
-  }, [menuOpen])
-
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1)
-      closeMenu()
-
-      if (!hash) {
-        setActiveSection('')
-        return
-      }
-
-      if (NAV_LINKS.some(link => link.href === `#${hash}`)) {
-        setActiveSection(hash)
-      }
-    }
-
-    window.addEventListener('hashchange', handleHashChange)
-    queueMicrotask(handleHashChange)
-    return () => window.removeEventListener('hashchange', handleHashChange)
-  }, [closeMenu])
-
-  useEffect(() => {
-    if (!menuOpen) {
-      return
-    }
-
-    const mediaQuery = window.matchMedia('(min-width: 768px)')
-    const handleMediaChange = (event: MediaQueryListEvent) => {
-      if (event.matches) {
-        closeMenu(true)
-      }
-    }
-
-    mediaQuery.addEventListener('change', handleMediaChange)
-    return () => mediaQuery.removeEventListener('change', handleMediaChange)
-  }, [closeMenu, menuOpen])
-
-  useEffect(() => {
-    if (!menuOpen) {
-      return
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        event.preventDefault()
-        closeMenu(true)
-        return
-      }
-
-      if (event.key !== 'Tab') {
-        return
-      }
-
-      const menu = mobileMenuRef.current
-      if (!menu) {
-        return
-      }
-
-      const focusableLinks = menu.querySelectorAll<HTMLAnchorElement>('a[href]')
-      if (focusableLinks.length === 0) {
-        return
-      }
-
-      const firstLink = focusableLinks[0]
-      const lastLink = focusableLinks[focusableLinks.length - 1]
-
-      if (event.shiftKey && document.activeElement === firstLink) {
-        event.preventDefault()
-        lastLink.focus()
-      } else if (!event.shiftKey && document.activeElement === lastLink) {
-        event.preventDefault()
-        firstLink.focus()
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [closeMenu, menuOpen])
-
-  useEffect(() => {
-    const sections = document.querySelectorAll<HTMLElement>('section[id]')
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id)
-          }
-        })
-      },
-      { rootMargin: '-20% 0px -65% 0px' }
-    )
-
-    sections.forEach(section => observer.observe(section))
-
-    return () => observer.disconnect()
-  }, [])
+  const handleHomeClick = useCallback(() => {
+    closeMenu()
+    setActiveSection('')
+  }, [closeMenu, setActiveSection])
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-ink-line bg-paper/90 backdrop-blur-sm">
@@ -146,10 +33,7 @@ export default function Nav() {
         <a
           href="#"
           aria-label="Home"
-          onClick={() => {
-            closeMenu()
-            setActiveSection('')
-          }}
+          onClick={handleHomeClick}
           className="font-serif text-wordmark text-ink transition-colors duration-fast hover:text-accent"
         >
           Eshan Khan
@@ -177,7 +61,7 @@ export default function Nav() {
 
         <button
           ref={menuButtonRef}
-          onClick={() => setMenuOpen(prev => !prev)}
+          onClick={toggleMenu}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
           aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}

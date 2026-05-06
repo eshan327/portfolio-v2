@@ -1,13 +1,15 @@
-import {
-  SITE_EMAIL,
-  SITE_GITHUB,
-  SITE_LINKEDIN,
-  SITE_RESUME,
-} from '@/lib/constants'
+import { HERO_ACTION_LINKS } from '@/data/contact'
+import { getSectionConfig } from '@/lib/sections'
 
 export default function Hero() {
+  const section = getSectionConfig('overview')
+
   return (
-    <section className="hero min-h-screen min-h-[100svh] px-7 pb-12 pt-32 md:px-14 md:pt-36">
+    <section
+      id={section.id}
+      aria-label={section.ariaLabel}
+      className="hero min-h-screen min-h-[100svh] px-7 pb-12 pt-32 md:px-14 md:pt-36"
+    >
       <div className="hero-top grid gap-12 md:grid-cols-2 md:items-end">
         <div>
           <h1 className="font-serif text-fluid-hero leading-none text-ink">
@@ -18,7 +20,9 @@ export default function Hero() {
         </div>
 
         <div className="space-y-6">
-          <p className="text-label font-mono uppercase tracking-widest text-accent">01 / Overview</p>
+          <p className="text-label font-mono uppercase tracking-widest text-accent">
+            {section.number} / {section.headerLabel}
+          </p>
 
           <p className="max-w-[34ch] font-serif text-fluid-tagline leading-[1.1] text-ink">
             Building at the edge of <em className="italic text-accent">mathematics</em>, markets,
@@ -49,36 +53,18 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-          <a
-            href={`mailto:${SITE_EMAIL}`}
-            className="inline-flex min-h-11 items-center text-label font-mono uppercase tracking-widest text-ink-muted transition-colors duration-fast hover:text-accent"
-          >
-            Email
-          </a>
-          <a
-            href={SITE_LINKEDIN}
-            aria-label="LinkedIn (opens in new tab)"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center text-label font-mono uppercase tracking-widest text-ink-muted transition-colors duration-fast hover:text-accent"
-          >
-            LinkedIn
-          </a>
-          <a
-            href={SITE_GITHUB}
-            aria-label="GitHub (opens in new tab)"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center text-label font-mono uppercase tracking-widest text-ink-muted transition-colors duration-fast hover:text-accent"
-          >
-            GitHub
-          </a>
-          <a
-            href={SITE_RESUME}
-            className="inline-flex min-h-11 items-center text-label font-mono uppercase tracking-widest text-ink-muted transition-colors duration-fast hover:text-accent"
-          >
-            Resume
-          </a>
+          {HERO_ACTION_LINKS.map(link => (
+            <a
+              key={link.label}
+              href={link.href}
+              aria-label={link.external ? `${link.label} (opens in new tab)` : undefined}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+              className="link-inline"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
       </div>
     </section>

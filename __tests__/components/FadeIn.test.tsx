@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '../test-utils'
 import type { ReactNode } from 'react'
 
 const useInViewMock = vi.fn()
@@ -16,7 +16,7 @@ vi.mock('framer-motion', () => {
   }
 })
 
-import FadeIn from '../src/components/ui/FadeIn'
+import FadeIn from '@/components/ui/FadeIn'
 
 describe('FadeIn', () => {
   it('uses hidden initial state before entering view', () => {
