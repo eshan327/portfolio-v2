@@ -1,8 +1,11 @@
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+
 import { ImageResponse } from 'next/og'
 
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/constants'
 
-export const runtime = 'edge'
+export const runtime = 'nodejs'
 export const size = {
   width: 1200,
   height: 630,
@@ -11,12 +14,8 @@ export const contentType = 'image/png'
 
 export default async function OpenGraphImage() {
   const [dmSerifItalic, ibmPlexMono] = await Promise.all([
-    fetch(new URL('../assets/fonts/DMSerifDisplay-Italic.ttf', import.meta.url)).then(res =>
-      res.arrayBuffer()
-    ),
-    fetch(new URL('../assets/fonts/IBMPlexMono-Regular.ttf', import.meta.url)).then(res =>
-      res.arrayBuffer()
-    ),
+    readFile(join(process.cwd(), 'src/assets/fonts/DMSerifDisplay-Italic.ttf')),
+    readFile(join(process.cwd(), 'src/assets/fonts/IBMPlexMono-Regular.ttf')),
   ])
 
   return new ImageResponse(

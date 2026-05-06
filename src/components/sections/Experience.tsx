@@ -15,7 +15,7 @@ export default function Experience() {
           {EXPERIENCE.map((item, index) => (
             <article
               key={item.company}
-              className={`exp-item grid gap-6 border-t border-ink-line py-9 md:grid-cols-[200px_1fr_160px] ${
+              className={`exp-item grid items-start gap-6 border-t border-ink-line py-9 md:grid-cols-[minmax(0,200px)_minmax(0,1fr)_max-content] ${
                 index === EXPERIENCE.length - 1 ? 'border-b' : ''
               }`}
             >
@@ -28,31 +28,33 @@ export default function Experience() {
                 ) : null}
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <p className="mb-4 text-body-sm font-mono text-ink-muted">
                   {item.role} - {item.location}
                 </p>
                 <ul className="space-y-2">
                   {item.bullets.map(bullet => (
-                    <li
-                      key={bullet}
-                      className="relative pl-5 text-body font-mono leading-relaxed text-ink before:absolute before:left-0 before:top-0 before:text-accent before:content-['\\2014']"
-                    >
-                      {parseBullet(bullet).map((segment, i) =>
-                        segment.strong ? (
-                          <strong key={i} className="font-medium text-accent">
-                            {segment.text}
-                          </strong>
-                        ) : (
-                          <Fragment key={i}>{segment.text}</Fragment>
-                        )
-                      )}
+                    <li key={bullet} className="grid grid-cols-[12px_minmax(0,1fr)] gap-3 text-body font-mono leading-relaxed text-ink">
+                      <span aria-hidden="true" className="text-accent">
+                        —
+                      </span>
+                      <span>
+                        {parseBullet(bullet).map((segment, i) =>
+                          segment.strong ? (
+                            <strong key={i} className="font-medium text-accent">
+                              {segment.text}
+                            </strong>
+                          ) : (
+                            <Fragment key={i}>{segment.text}</Fragment>
+                          )
+                        )}
+                      </span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <p className="order-first text-left text-label font-mono uppercase tracking-widest text-ink-muted md:order-last md:text-right">
+              <p className="order-first whitespace-nowrap text-left text-label font-mono uppercase tracking-widest text-ink-muted md:order-last md:justify-self-end md:text-right">
                 {item.dateRange}
               </p>
             </article>
