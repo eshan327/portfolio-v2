@@ -11,6 +11,7 @@ import {
   SITE_GITHUB,
   SITE_LINKEDIN,
   SITE_NAME,
+  SITE_PHONE,
   SITE_URL,
 } from '@/lib/constants'
 import { dmSerifDisplay, ibmPlexMono } from '@/lib/fonts'
@@ -53,6 +54,7 @@ const personJsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   email: SITE_EMAIL,
+  telephone: SITE_PHONE,
   alumniOf: {
     '@type': 'CollegeOrUniversity',
     name: 'University of Maryland, College Park',

@@ -6,7 +6,7 @@ import Skills from '@/components/sections/Skills'
 
 export default function Home() {
   return (
-    <main id="content" className="pt-18">
+    <main id="content" tabIndex={-1}>
       <Hero />
       <Experience />
       <Projects />

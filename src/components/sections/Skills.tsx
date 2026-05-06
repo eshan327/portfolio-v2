@@ -5,7 +5,7 @@ import { SKILLS } from '@/data/skills'
 export default function Skills() {
   return (
     <FadeIn>
-      <section id="skills" className="section px-7 py-section-y md:px-14">
+      <section id="skills" aria-label="Skills" className="section px-7 py-section-y md:px-14">
         <SectionHeader number="04" label="Skills" />
 
         <div className="max-w-skills-max">

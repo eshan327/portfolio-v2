@@ -19,6 +19,7 @@
   --text-body-md: 14px;
   --text-display-sm: 22px;
   --text-display-md: 28px;
+  --text-wordmark: 17px;
 
   --text-fluid-tagline: clamp(22px, 2.5vw, 30px);
   --text-fluid-hero: clamp(80px, 11vw, 160px);
@@ -36,11 +37,13 @@
 html {
   scrollbar-gutter: stable;
   background-color: var(--color-paper);
+  overflow-x: clip;
 }
 
 body {
   background-color: var(--color-paper);
   color: var(--color-ink);
+  overflow-x: clip;
 }
 
 body::before {
@@ -69,6 +72,10 @@ body::before {
 ::selection {
   background-color: color-mix(in srgb, var(--color-accent) 20%, transparent);
   color: var(--color-ink);
+}
+
+section[id] {
+  scroll-margin-top: 88px;
 }
 
 @media print {

@@ -9,6 +9,9 @@ export default function SectionHeader({ number, label }: SectionHeaderProps) {
       <span aria-hidden="true" className="text-label font-mono text-accent">
         {number}
       </span>
+      <span aria-hidden="true" className="text-label font-mono text-accent">
+        /
+      </span>
       <span className="text-label font-mono uppercase tracking-widest text-ink-muted">{label}</span>
       <div aria-hidden="true" className="h-px flex-1 bg-ink-line" />
     </div>

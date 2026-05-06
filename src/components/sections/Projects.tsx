@@ -7,7 +7,7 @@ import { PROJECTS } from '@/data/projects'
 export default function Projects() {
   return (
     <FadeIn>
-      <section id="projects" className="section px-7 py-section-y md:px-14">
+      <section id="projects" aria-label="Selected Projects" className="section px-7 py-section-y md:px-14">
         <SectionHeader number="03" label="Selected Projects" />
 
         <div className="projects-grid grid border border-ink-line md:grid-cols-3">

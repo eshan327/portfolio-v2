@@ -8,7 +8,7 @@ import { parseBullet } from '@/lib/parseBullet'
 export default function Experience() {
   return (
     <FadeIn>
-      <section id="experience" className="section px-7 py-section-y md:px-14">
+      <section id="experience" aria-label="Experience" className="section px-7 py-section-y md:px-14">
         <SectionHeader number="02" label="Experience" />
 
         <div>
@@ -36,7 +36,7 @@ export default function Experience() {
                   {item.bullets.map(bullet => (
                     <li
                       key={bullet}
-                      className="relative pl-5 text-body font-mono leading-relaxed text-ink before:absolute before:left-0 before:top-0 before:text-accent before:content-['-']"
+                      className="relative pl-5 text-body font-mono leading-relaxed text-ink before:absolute before:left-0 before:top-0 before:text-accent before:content-['\\2014']"
                     >
                       {parseBullet(bullet).map((segment, i) =>
                         segment.strong ? (

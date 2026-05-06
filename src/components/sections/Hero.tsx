@@ -51,29 +51,31 @@ export default function Hero() {
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
           <a
             href={`mailto:${SITE_EMAIL}`}
-            className="text-label font-mono uppercase tracking-widest text-ink-muted transition-colors duration-fast hover:text-accent"
+            className="inline-flex min-h-11 items-center text-label font-mono uppercase tracking-widest text-ink-muted transition-colors duration-fast hover:text-accent"
           >
             Email
           </a>
           <a
             href={SITE_LINKEDIN}
+            aria-label="LinkedIn (opens in new tab)"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-label font-mono uppercase tracking-widest text-ink-muted transition-colors duration-fast hover:text-accent"
+            className="inline-flex min-h-11 items-center text-label font-mono uppercase tracking-widest text-ink-muted transition-colors duration-fast hover:text-accent"
           >
             LinkedIn
           </a>
           <a
             href={SITE_GITHUB}
+            aria-label="GitHub (opens in new tab)"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-label font-mono uppercase tracking-widest text-ink-muted transition-colors duration-fast hover:text-accent"
+            className="inline-flex min-h-11 items-center text-label font-mono uppercase tracking-widest text-ink-muted transition-colors duration-fast hover:text-accent"
           >
             GitHub
           </a>
           <a
             href={SITE_RESUME}
-            className="text-label font-mono uppercase tracking-widest text-ink-muted transition-colors duration-fast hover:text-accent"
+            className="inline-flex min-h-11 items-center text-label font-mono uppercase tracking-widest text-ink-muted transition-colors duration-fast hover:text-accent"
           >
             Resume
           </a>
