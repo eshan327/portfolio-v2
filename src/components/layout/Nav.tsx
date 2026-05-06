@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import type { NavLink } from '@/types'
 
@@ -16,6 +16,16 @@ export default function Nav() {
   const [activeSection, setActiveSection] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
   const firstMobileLinkRef = useRef<HTMLAnchorElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
+
+  const closeMenu = useCallback((restoreFocus = false) => {
+    setMenuOpen(false)
+
+    if (restoreFocus) {
+      queueMicrotask(() => menuButtonRef.current?.focus())
+    }
+  }, [])
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -36,7 +46,7 @@ export default function Nav() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1)
-      setMenuOpen(false)
+      closeMenu()
 
       if (!hash) {
         setActiveSection('')
@@ -51,7 +61,7 @@ export default function Nav() {
     window.addEventListener('hashchange', handleHashChange)
     queueMicrotask(handleHashChange)
     return () => window.removeEventListener('hashchange', handleHashChange)
-  }, [])
+  }, [closeMenu])
 
   useEffect(() => {
     if (!menuOpen) {
@@ -61,13 +71,13 @@ export default function Nav() {
     const mediaQuery = window.matchMedia('(min-width: 768px)')
     const handleMediaChange = (event: MediaQueryListEvent) => {
       if (event.matches) {
-        setMenuOpen(false)
+        closeMenu(true)
       }
     }
 
     mediaQuery.addEventListener('change', handleMediaChange)
     return () => mediaQuery.removeEventListener('change', handleMediaChange)
-  }, [menuOpen])
+  }, [closeMenu, menuOpen])
 
   useEffect(() => {
     if (!menuOpen) {
@@ -76,13 +86,40 @@ export default function Nav() {
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        setMenuOpen(false)
+        event.preventDefault()
+        closeMenu(true)
+        return
+      }
+
+      if (event.key !== 'Tab') {
+        return
+      }
+
+      const menu = mobileMenuRef.current
+      if (!menu) {
+        return
+      }
+
+      const focusableLinks = menu.querySelectorAll<HTMLAnchorElement>('a[href]')
+      if (focusableLinks.length === 0) {
+        return
+      }
+
+      const firstLink = focusableLinks[0]
+      const lastLink = focusableLinks[focusableLinks.length - 1]
+
+      if (event.shiftKey && document.activeElement === firstLink) {
+        event.preventDefault()
+        lastLink.focus()
+      } else if (!event.shiftKey && document.activeElement === lastLink) {
+        event.preventDefault()
+        firstLink.focus()
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [menuOpen])
+  }, [closeMenu, menuOpen])
 
   useEffect(() => {
     const sections = document.querySelectorAll<HTMLElement>('section[id]')
@@ -105,11 +142,12 @@ export default function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-ink-line bg-paper/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-[1200px] items-center justify-between px-7 py-4 md:px-14">
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a
           href="#"
           aria-label="Home"
           onClick={() => {
-            setMenuOpen(false)
+            closeMenu()
             setActiveSection('')
           }}
           className="font-serif text-wordmark text-ink transition-colors duration-fast hover:text-accent"
@@ -138,6 +176,7 @@ export default function Nav() {
         </nav>
 
         <button
+          ref={menuButtonRef}
           onClick={() => setMenuOpen(prev => !prev)}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
@@ -204,6 +243,7 @@ export default function Nav() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            ref={mobileMenuRef}
             id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -222,7 +262,7 @@ export default function Nav() {
                     ref={index === 0 ? firstMobileLinkRef : undefined}
                     href={link.href}
                     aria-current={isActive ? 'location' : undefined}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={() => closeMenu()}
                     className={`flex min-h-11 items-center py-3 text-label font-mono uppercase tracking-widest transition-colors duration-fast ${
                       isActive ? 'text-ink' : 'text-ink-muted hover:text-accent'
                     }`}

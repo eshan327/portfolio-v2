@@ -6,10 +6,10 @@ export const PROJECTS: Project[] = [
     nameLines: ['Auditory', 'Intent', 'Classifier'],
     italicLine: 1,
     description:
-      'Full ML pipeline classifying expressive intent from nonverbal vocalizations to support autism research. Built with PyTorch and Librosa, processing 7,000+ audio samples with MFCCs, spectral entropy, and Mel spectrograms.',
+      'Built an end-to-end pipeline classifying expressive intent from nonverbal vocalizations for autism research. Engineered feature extraction and model training over 7,000+ samples with PyTorch and Librosa.',
     metric: {
       value: '1st',
-      label: 'out of 500+ participants in UMD ML Competition · 95% F1-score with vision transformers',
+      label: 'UMD ML Competition, 500+ participants · 95% F1-score with vision transformers',
     },
     stack: ['PyTorch', 'Scikit-learn', 'Librosa', 'Keras'],
   },
@@ -18,10 +18,10 @@ export const PROJECTS: Project[] = [
     nameLines: ['Poisson', 'Disk', 'Sequences'],
     italicLine: 1,
     description:
-      "Bridson's Poisson-Disk sampling algorithm in Rust generating distance-constrained 2D point distributions for procedural content generation. Optimized spatial grid structures for linear runtime, compiled to WebAssembly for in-browser visualization.",
+      "Implemented Bridson's Poisson-disk sampling in Rust for distance-constrained 2D generation. Optimized spatial grids for near-linear runtime and compiled to WebAssembly for interactive in-browser visualization.",
     metric: {
       value: '<3s',
-      label: 'in-browser render via WebAssembly · linear runtime with optimized spatial grids',
+      label: 'WebAssembly in-browser render · near-linear runtime with optimized spatial grids',
     },
     stack: ['Rust', 'WebAssembly'],
   },
@@ -30,10 +30,10 @@ export const PROJECTS: Project[] = [
     nameLines: ['Palette', 'Canvas', 'AI'],
     italicLine: 1,
     description:
-      'Chrome extension providing automated academic insights within Canvas LMS. Privacy-first: all data is processed on-device via a locally hosted LLM. No user data ever leaves the browser.',
+      'Built a Chrome extension that delivers academic insights inside Canvas LMS using a local LLM pipeline. Designed a privacy-first architecture where all analysis runs on-device.',
     metric: {
       value: '100+',
-      label: 'active student users · zero server-side data processing',
+      label: 'active student users · zero server-side data processing by design',
     },
     stack: ['React', 'Node.js', 'Docker'],
   },

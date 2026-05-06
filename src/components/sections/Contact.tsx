@@ -1,6 +1,12 @@
 import FadeIn from '@/components/ui/FadeIn'
 import SectionHeader from '@/components/ui/SectionHeader'
-import { SITE_EMAIL, SITE_GITHUB, SITE_LINKEDIN, SITE_PHONE, SITE_URL } from '@/lib/constants'
+import {
+  SITE_EMAIL,
+  SITE_GITHUB,
+  SITE_LINKEDIN,
+  SITE_PHONE,
+  SITE_URL,
+} from '@/lib/constants'
 
 const CONTACT_LINKS = [
   {

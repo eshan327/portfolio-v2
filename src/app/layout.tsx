@@ -9,6 +9,7 @@ import {
   SITE_DESCRIPTION,
   SITE_EMAIL,
   SITE_GITHUB,
+  SITE_KEYWORDS,
   SITE_LINKEDIN,
   SITE_NAME,
   SITE_PHONE,
@@ -21,25 +22,49 @@ import './globals.css'
 export const metadata: Metadata = {
   title: SITE_NAME,
   description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: SITE_KEYWORDS,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: 'Technology',
   metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: SITE_URL,
   },
   openGraph: {
     title: SITE_NAME,
-    description: 'CS + Mathematics @ UMD. Incoming Quant Trader at IMC Trading.',
+    description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
-    images: [{ url: '/opengraph-image', width: 1200, height: 630 }],
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} portfolio preview`,
+      },
+    ],
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: SITE_NAME,
-    images: ['/opengraph-image'],
+    description: SITE_DESCRIPTION,
+    images: [{ url: '/opengraph-image', alt: `${SITE_NAME} portfolio preview` }],
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
 }
 
 export const viewport: Viewport = {
@@ -48,22 +73,41 @@ export const viewport: Viewport = {
   themeColor: '#F5EFE3',
 }
 
-const personJsonLd = {
+const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: SITE_NAME,
-  url: SITE_URL,
-  email: SITE_EMAIL,
-  telephone: SITE_PHONE,
-  alumniOf: {
-    '@type': 'CollegeOrUniversity',
-    name: 'University of Maryland, College Park',
-  },
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Apex Fund',
-  },
-  sameAs: [SITE_LINKEDIN, SITE_GITHUB],
+  '@graph': [
+    {
+      '@type': 'Person',
+      name: SITE_NAME,
+      url: SITE_URL,
+      description: SITE_DESCRIPTION,
+      email: SITE_EMAIL,
+      telephone: SITE_PHONE,
+      jobTitle: ['Quantitative Developer', 'Incoming Quantitative Trader Intern'],
+      alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        name: 'University of Maryland, College Park',
+      },
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Apex Fund',
+      },
+      knowsAbout: [
+        'algorithmic trading',
+        'quantitative research',
+        'machine learning',
+        'software engineering',
+      ],
+      sameAs: [SITE_LINKEDIN, SITE_GITHUB],
+    },
+    {
+      '@type': 'WebSite',
+      name: SITE_NAME,
+      url: SITE_URL,
+      description: SITE_DESCRIPTION,
+      inLanguage: 'en-US',
+    },
+  ],
 }
 
 export default function RootLayout({
@@ -92,7 +136,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </body>
     </html>
