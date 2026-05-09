@@ -1,5 +1,6 @@
 import { HERO_ACTION_LINKS } from '@/data/contact'
 import { getSectionConfig } from '@/lib/sections'
+import TrackedLink from '@/components/ui/TrackedLink'
 
 export default function Hero() {
   const section = getSectionConfig('overview')
@@ -54,16 +55,20 @@ export default function Hero() {
 
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
           {HERO_ACTION_LINKS.map(link => (
-            <a
+            <TrackedLink
               key={link.label}
               href={link.href}
               aria-label={link.external ? `${link.label} (opens in new tab)` : undefined}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
               className="link-inline"
+              eventName="hero_action_click"
+              eventData={{
+                label: link.label,
+              }}
             >
               {link.label}
-            </a>
+            </TrackedLink>
           ))}
         </div>
       </div>

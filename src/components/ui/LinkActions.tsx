@@ -1,5 +1,7 @@
 import type { ProjectLink } from '@/types'
 
+import TrackedLink from '@/components/ui/TrackedLink'
+
 interface LinkActionsProps {
   links?: ProjectLink[]
   isInProgress?: boolean
@@ -11,15 +13,20 @@ export default function LinkActions({ links, isInProgress, keyPrefix }: LinkActi
     return (
       <div className="link-actions-row">
         {links.map(link => (
-          <a
+          <TrackedLink
             key={`${keyPrefix}-${link.href}`}
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
             className="link-inline"
+            eventName="project_link_click"
+            eventData={{
+              source: keyPrefix,
+              label: link.label,
+            }}
           >
             {link.label}
-          </a>
+          </TrackedLink>
         ))}
       </div>
     )

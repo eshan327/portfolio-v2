@@ -3,6 +3,7 @@ import type { ReactElement, SVGProps } from 'react'
 import { GitHubIcon, LinkedInIcon, MailIcon, PhoneIcon } from '@/components/ui/Icons'
 import FadeIn from '@/components/ui/FadeIn'
 import SectionHeader from '@/components/ui/SectionHeader'
+import TrackedLink from '@/components/ui/TrackedLink'
 import { CONTACT_LINKS } from '@/data/contact'
 import { getSectionConfig } from '@/lib/sections'
 import type { ContactIconName } from '@/types'
@@ -42,12 +43,16 @@ export default function Contact() {
 
                 return (
                   <li key={link.label} className="bg-paper">
-                    <a
+                    <TrackedLink
                       href={link.href}
                       aria-label={link.external ? `${link.label} (opens in new tab)` : undefined}
                       target={link.external ? '_blank' : undefined}
                       rel={link.external ? 'noopener noreferrer' : undefined}
                       className="group flex min-h-[156px] flex-col justify-between px-5 py-5 transition-colors duration-fast hover:bg-paper-surface"
+                      eventName="contact_link_click"
+                      eventData={{
+                        label: link.label,
+                      }}
                     >
                       <div className="flex items-start justify-between gap-4">
                         <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink-line text-accent transition-colors duration-fast group-hover:border-accent/60">
@@ -66,7 +71,7 @@ export default function Contact() {
                           {link.value}
                         </p>
                       </div>
-                    </a>
+                    </TrackedLink>
                   </li>
                 )
               })}

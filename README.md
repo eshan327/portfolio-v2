@@ -99,3 +99,30 @@ Deploy on Vercel from `main`. Before deploying, run:
 ```bash
 npm run verify
 ```
+
+## Vercel Web Analytics
+
+This project includes Vercel Web Analytics via `@vercel/analytics` in `src/app/layout.tsx`.
+
+- Page views are tracked automatically after deployment on Vercel.
+- Custom click events are tracked for:
+	- hero action links (`hero_action_click`)
+	- project and additional-work links (`project_link_click`)
+	- contact links (`contact_link_click`)
+
+Notes:
+
+- Analytics data appears only after navigating the deployed site.
+- Ad blockers and privacy extensions can suppress analytics events.
+
+## Vercel Speed Insights
+
+This project includes Vercel Speed Insights via `@vercel/speed-insights` in `src/app/layout.tsx`.
+
+- Web Vitals are collected automatically after deployment on Vercel.
+- No extra component wiring is needed beyond the existing `<SpeedInsights />` usage.
+
+Notes:
+
+- Speed Insights data is visible in Vercel only after real page visits on a deployed environment.
+- Content blockers can suppress reporting for some sessions.
