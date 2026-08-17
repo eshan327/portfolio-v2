@@ -2,24 +2,19 @@ import type { SkillRow } from '@/types'
 
 export const SKILLS: SkillRow[] = [
   {
-    category: 'Languages',
-    skills: 'Python, Java, C, C++, JavaScript, TypeScript, Rust, OCaml, SQL, R',
+    category: 'Core',
+    skills: 'Python, C++, Java, TypeScript, SQL, Rust',
   },
   {
-    category: 'ML / Quant',
-    skills: 'PyTorch, NumPy, pandas, Scikit-learn, JAX, XArray, Librosa, Keras',
+    category: 'Markets / Data',
+    skills: 'Polars, pandas, NumPy, PyTorch, Scikit-learn, Kafka, WebSocket',
   },
   {
-    category: 'Web / Backend',
-    skills: 'React, Next.js, Node.js, Spring Boot, Django, REST, WebSocket',
+    category: 'Systems',
+    skills: 'Linux, Docker, AWS, PostgreSQL, SQLite, Redis',
   },
   {
-    category: 'Infrastructure',
-    skills: 'AWS, Docker, Kubernetes, Linux/Unix, Git, Maven, Jira, Figma',
-  },
-  {
-    category: 'Coursework',
-    skills:
-      'Machine Learning, Compilers, Computer Systems, Data Structures, Algorithms, Functional Programming, Object-Oriented Programming, Real Analysis, Linear Algebra, Data Science, Statistics',
+    category: 'Foundations',
+    skills: 'Algorithms, Probability, Statistics, Linear Algebra, Systems, Compilers',
   },
 ]

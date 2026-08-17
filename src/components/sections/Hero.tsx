@@ -1,14 +1,10 @@
 import { HERO_ACTION_LINKS } from '@/data/contact'
-import { getSectionConfig } from '@/lib/sections'
-import TrackedLink from '@/components/ui/TrackedLink'
 
 export default function Hero() {
-  const section = getSectionConfig('overview')
-
   return (
     <section
-      id={section.id}
-      aria-label={section.ariaLabel}
+      id="overview"
+      aria-label="Overview"
       className="hero min-h-screen min-h-[100svh] px-7 pb-12 pt-32 md:px-14 md:pt-36"
     >
       <div className="hero-top grid gap-12 md:grid-cols-2 md:items-end">
@@ -22,53 +18,39 @@ export default function Hero() {
 
         <div className="space-y-6">
           <p className="text-label font-mono uppercase tracking-widest text-accent">
-            {section.number} / {section.headerLabel}
+            01 / Overview
           </p>
 
           <p className="max-w-[34ch] font-serif text-fluid-tagline leading-[1.1] text-ink">
-            Building at the edge of <em className="italic text-accent">mathematics</em>, markets,
-            and systems.
+            Quantitative trading, <em className="italic text-accent">market systems</em>, and
+            applied machine learning.
           </p>
 
           <div className="space-y-1 text-body-sm font-mono text-ink-muted">
             <p>
-              B.S. Computer Science + Mathematics, <span className="font-medium text-ink">UMD</span>
+              Computer Science + Mathematics · <span className="font-medium text-ink">UMD</span>
             </p>
             <p>
-              GPA <span className="font-medium text-ink">3.8</span>, graduating May 2027
+              Quantitative Trader Intern · <span className="font-medium text-ink">IMC Trading</span>
             </p>
-            <p>
-              Incoming Quantitative Trader Intern,{' '}
-              <span className="font-medium text-ink">IMC Trading</span>
-            </p>
-            <p>
-              Quantitative Developer, <span className="font-medium text-ink">Apex Fund</span>
-            </p>
+            <p>Research · execution · systems</p>
           </div>
         </div>
       </div>
 
       <div className="mt-16 flex flex-col gap-6 border-t border-ink-line pt-8 md:flex-row md:items-center md:justify-between">
-        <p className="text-label font-mono uppercase tracking-widest text-ink-muted">
-          Scroll to explore
-        </p>
-
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 md:ml-auto">
           {HERO_ACTION_LINKS.map(link => (
-            <TrackedLink
+            <a
               key={link.label}
               href={link.href}
               aria-label={link.external ? `${link.label} (opens in new tab)` : undefined}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'noopener noreferrer' : undefined}
               className="link-inline"
-              eventName="hero_action_click"
-              eventData={{
-                label: link.label,
-              }}
             >
               {link.label}
-            </TrackedLink>
+            </a>
           ))}
         </div>
       </div>

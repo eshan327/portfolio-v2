@@ -5,7 +5,7 @@ interface SectionHeaderProps {
 
 export default function SectionHeader({ number, label }: SectionHeaderProps) {
   return (
-    <header className="mb-16 flex items-center gap-4" aria-label={label}>
+    <header className="mb-12 flex items-center gap-4" aria-label={label}>
       <span aria-hidden="true" className="text-label font-mono text-accent">
         {number}
       </span>

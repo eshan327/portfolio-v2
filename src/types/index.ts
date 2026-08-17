@@ -3,8 +3,8 @@ export interface ExperienceItem {
   role: string
   location: string
   dateRange: string
-  bullets: string[]
-  badge?: string
+  focus: string[]
+  stack: string[]
 }
 
 export interface ProjectLink {
@@ -14,24 +14,13 @@ export interface ProjectLink {
 
 export interface Project {
   index: string
+  category: string
   nameLines: string[]
   italicLine?: number
-  description: string
-  metric: {
-    value: string
-    label: string
-  }
+  proof: string
   stack: string[]
-  links?: ProjectLink[]
-  isInProgress?: boolean
-}
-
-export interface AdditionalWorkItem {
-  name: string
-  summary: string
-  stack: string[]
-  links?: ProjectLink[]
-  isInProgress?: boolean
+  link?: ProjectLink
+  status?: string
 }
 
 export type ContactIconName = 'mail' | 'phone' | 'linkedin' | 'github'
@@ -54,9 +43,4 @@ export interface HeroActionLink {
 export interface SkillRow {
   category: string
   skills: string
-}
-
-export interface NavLink {
-  label: string
-  href: string
 }

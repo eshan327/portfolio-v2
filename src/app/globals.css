@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-paper: #f5efe3;
@@ -25,13 +25,11 @@
   --text-fluid-hero: clamp(80px, 11vw, 160px);
   --text-fluid-contact: clamp(56px, 8vw, 112px);
 
-  --spacing-section-y: 88px;
+  --spacing-section-y: 72px;
   --spacing-skills-cat: 100px;
   --spacing-skills-max: 860px;
 
   --duration-fast: 200ms;
-  --duration-reveal: 650ms;
-  --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
@@ -66,7 +64,9 @@ body::before {
 
 *:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-paper), 0 0 0 4px var(--color-accent);
+  box-shadow:
+    0 0 0 2px var(--color-paper),
+    0 0 0 4px var(--color-accent);
 }
 
 ::selection {
@@ -115,64 +115,5 @@ section[id] {
     font-size: var(--text-label);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-  }
-}
-
-@media print {
-  nav,
-  footer {
-    display: none;
-  }
-
-  body::before {
-    display: none;
-  }
-
-  body,
-  .hero,
-  .section,
-  #contact {
-    background: #ffffff !important;
-    color: #000000 !important;
-  }
-
-  .text-accent,
-  em {
-    color: #000000 !important;
-    font-style: italic;
-  }
-
-  .hero-top,
-  .exp-item,
-  .projects-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .section,
-  #contact {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .exp-item,
-  .proj-card {
-    break-inside: avoid-page;
-    page-break-inside: avoid;
-  }
-
-  h1,
-  h2,
-  h3 {
-    widows: 3;
-    orphans: 3;
-  }
-
-  nav {
-    backdrop-filter: none;
-  }
-
-  .hero {
-    min-height: unset;
-    padding-top: 40px;
   }
 }

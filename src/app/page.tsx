@@ -1,4 +1,3 @@
-import AdditionalWork from '@/components/sections/AdditionalWork'
 import Contact from '@/components/sections/Contact'
 import Experience from '@/components/sections/Experience'
 import Hero from '@/components/sections/Hero'
@@ -11,7 +10,6 @@ export default function Home() {
       <Hero />
       <Experience />
       <Projects />
-      <AdditionalWork />
       <Skills />
       <Contact />
     </main>
