@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
+import Script from 'next/script'
 
 import Footer from '@/components/layout/Footer'
 import Nav from '@/components/layout/Nav'
@@ -8,6 +9,17 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/constants'
 import { dmSerifDisplay, ibmPlexMono } from '@/lib/fonts'
 
 import './globals.css'
+
+const LEGACY_HOST_REDIRECT = `
+(() => {
+  if (window.location.hostname !== 'eshankhan.vercel.app') return;
+
+  const target = new URL(window.location.href);
+  target.protocol = 'https:';
+  target.host = 'eshankhan.dev';
+  window.location.replace(target.toString());
+})();
+`
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -30,6 +42,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${dmSerifDisplay.variable} ${ibmPlexMono.variable}`}>
       <body className="min-h-screen bg-paper font-mono text-ink antialiased">
+        <Script id="legacy-host-redirect" strategy="beforeInteractive">
+          {LEGACY_HOST_REDIRECT}
+        </Script>
+
         <a
           href="#content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:border focus:border-ink-line focus:bg-paper focus:px-4 focus:py-2 focus:text-label focus:uppercase focus:tracking-widest focus:text-ink"
