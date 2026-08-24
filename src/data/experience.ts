@@ -3,7 +3,7 @@ export const EXPERIENCE = [
     company: 'IMC Trading',
     role: 'Quantitative Trader Intern',
     location: 'Chicago, IL',
-    dateRange: 'Jun. 2026 – Present',
+    dateRange: 'Jun. 2026 – Aug. 2026',
     focus: ['Options microstructure', 'Systematic trading', 'Low-latency systems'],
     stack: ['Python', 'C++', 'Java', 'SQL'],
   },
