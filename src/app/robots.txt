@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://eshankhan.vercel.app/sitemap.xml
+Sitemap: https://eshankhan.dev/sitemap.xml
