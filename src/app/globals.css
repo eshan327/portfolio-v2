@@ -44,18 +44,6 @@ body {
   overflow-x: clip;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url('/noise.png');
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  opacity: 0.045;
-  pointer-events: none;
-  z-index: 9000;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
