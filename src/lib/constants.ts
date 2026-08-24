@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://eshankhan.vercel.app'
+export const SITE_URL = 'https://eshankhan.dev'
 export const SITE_NAME = 'Eshan Khan'
 export const SITE_DESCRIPTION =
   'Quantitative trading, market systems, and applied machine learning.'
