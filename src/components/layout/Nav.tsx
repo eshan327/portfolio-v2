@@ -14,7 +14,7 @@ export default function Nav() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-ink-line bg-paper/90 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-[1200px] items-center justify-between px-7 py-4 md:px-14">
+      <div className="flex items-center justify-between px-7 py-4 md:px-14">
         <a
           href="#overview"
           aria-label="Home"

@@ -1,36 +1,40 @@
 import SectionHeader from '@/components/ui/SectionHeader'
-import Tag from '@/components/ui/Tag'
 import { EXPERIENCE } from '@/data/experience'
 
 export default function Experience() {
   return (
-    <section id="experience" aria-label="Experience" className="section px-7 py-section-y md:px-14">
+    <section
+      id="experience"
+      aria-label="Experience"
+      className="section px-7 py-section-y md:px-14"
+    >
       <SectionHeader number="02" label="Experience" />
 
-      <div>
-        {EXPERIENCE.map((item, index) => (
+      <div className="border-b border-ink-line">
+        <div className="hidden grid-cols-[1fr_1.2fr_0.8fr_1.2fr_1fr] gap-8 border-b border-ink-line pb-3 text-label font-mono uppercase tracking-wider text-ink-muted lg:grid">
+          <span>Company</span>
+          <span>Role / Location</span>
+          <span>Dates</span>
+          <span>Focus</span>
+          <span>Stack</span>
+        </div>
+        {EXPERIENCE.map(item => (
           <article
             key={item.company}
-            className={`exp-item grid items-start gap-6 border-t border-ink-line py-9 md:grid-cols-[minmax(0,200px)_minmax(0,1fr)_max-content] ${
-              index === EXPERIENCE.length - 1 ? 'border-b' : ''
-            }`}
+            className="exp-item grid gap-5 border-b border-ink-line py-7 last:border-b-0 lg:grid-cols-[1fr_1.2fr_0.8fr_1.2fr_1fr] lg:gap-8"
           >
-            <p className="font-serif text-display-sm leading-none text-ink">{item.company}</p>
-
-            <div className="min-w-0">
-              <p className="mb-4 text-body-sm font-mono text-ink-muted">
-                {item.role} - {item.location}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {item.focus.map(focus => (
-                  <Tag key={focus} label={focus} />
-                ))}
-              </div>
-              <p className="mt-4 text-body-sm font-mono text-ink">{item.stack.join(' · ')}</p>
-            </div>
-
-            <p className="order-first whitespace-nowrap text-left text-label font-mono uppercase tracking-widest text-ink-muted md:order-last md:justify-self-end md:text-right">
-              {item.dateRange}
+            <h3 className="font-serif text-display-md leading-tight text-ink">{item.company}</h3>
+            <p className="text-body-sm font-mono leading-relaxed text-ink">
+              {item.role}
+              <br />
+              <span className="text-ink-muted">{item.location}</span>
+            </p>
+            <p className="text-body-sm font-mono leading-relaxed text-ink">{item.dateRange}</p>
+            <p className="text-body-sm font-mono leading-relaxed text-ink">
+              {item.focus.join(' · ')}
+            </p>
+            <p className="text-body-sm font-mono leading-relaxed text-ink-muted">
+              {item.stack.join(' · ')}
             </p>
           </article>
         ))}

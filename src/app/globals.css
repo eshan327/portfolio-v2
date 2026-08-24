@@ -21,9 +21,9 @@
   --text-display-md: 28px;
   --text-wordmark: 17px;
 
-  --text-fluid-tagline: clamp(22px, 2.5vw, 30px);
-  --text-fluid-hero: clamp(80px, 11vw, 160px);
-  --text-fluid-contact: clamp(56px, 8vw, 112px);
+  --text-fluid-tagline: clamp(26px, 3.2vw, 48px);
+  --text-fluid-hero: clamp(52px, 5vw, 80px);
+  --text-fluid-contact: clamp(40px, 4.5vw, 64px);
 
   --spacing-section-y: 72px;
   --spacing-skills-cat: 100px;

@@ -1,71 +1,41 @@
-import type { ReactElement, SVGProps } from 'react'
-
-import { GitHubIcon, LinkedInIcon, MailIcon, PhoneIcon } from '@/components/ui/Icons'
-import SectionHeader from '@/components/ui/SectionHeader'
 import { CONTACT_LINKS } from '@/data/contact'
-import type { ContactIconName } from '@/types'
-
-const ICON_MAP: Record<ContactIconName, (props: SVGProps<SVGSVGElement>) => ReactElement> = {
-  mail: MailIcon,
-  phone: PhoneIcon,
-  linkedin: LinkedInIcon,
-  github: GitHubIcon,
-}
+import SectionHeader from '@/components/ui/SectionHeader'
 
 export default function Contact() {
   return (
-    <section id="contact" aria-label="Contact" className="section px-7 py-section-y md:px-14">
+    <section
+      id="contact"
+      aria-label="Contact"
+      className="section px-7 py-section-y md:px-14"
+    >
       <SectionHeader number="05" label="Contact" />
 
-      <div className="space-y-10">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.35fr)] lg:items-end">
-          <div className="space-y-6">
-            <h2 className="font-serif text-fluid-contact leading-none text-ink">
-              Let&apos;s
-              <br />
-              <span className="italic text-accent">talk.</span>
-            </h2>
-            <p className="max-w-[38ch] text-body-sm font-mono leading-relaxed text-ink-muted">
-              Markets, systems, or applied ML.
-            </p>
-          </div>
-
-          <ul className="grid gap-px overflow-hidden border border-ink-line bg-ink-line sm:grid-cols-2">
-            {CONTACT_LINKS.map(link => {
-              const Icon = ICON_MAP[link.icon]
-
-              return (
-                <li key={link.label} className="bg-paper">
-                  <a
-                    href={link.href}
-                    aria-label={link.external ? `${link.label} (opens in new tab)` : undefined}
-                    target={link.external ? '_blank' : undefined}
-                    rel={link.external ? 'noopener noreferrer' : undefined}
-                    className="group flex min-h-[156px] flex-col justify-between px-5 py-5 transition-colors duration-fast hover:bg-paper-surface"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-ink-line text-accent transition-colors duration-fast group-hover:border-accent/60">
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <span className="text-tag font-mono uppercase tracking-widest text-ink-muted">
-                        /{link.id}
-                      </span>
-                    </div>
-
-                    <div className="space-y-2">
-                      <span className="block text-label font-mono uppercase tracking-widest text-ink-muted">
-                        {link.label}
-                      </span>
-                      <p className="break-words text-body-sm font-mono leading-relaxed text-ink">
-                        {link.value}
-                      </p>
-                    </div>
-                  </a>
-                </li>
-              )
-            })}
-          </ul>
+      <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div className="space-y-5">
+          <h2 className="font-serif text-fluid-contact leading-none text-ink">Let&apos;s talk</h2>
+          <p className="max-w-[42ch] text-body-md font-mono leading-relaxed text-ink-muted">
+            Open to software, systems, and quantitative roles
+          </p>
         </div>
+
+        <ul className="border-t border-ink-line">
+          {CONTACT_LINKS.map(link => (
+            <li key={link.label} className="border-b border-ink-line">
+              <a
+                href={link.href}
+                aria-label={link.external ? `${link.label} (opens in new tab)` : undefined}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                className="group grid min-h-16 items-center gap-2 py-4 sm:grid-cols-[100px_minmax(0,1fr)]"
+              >
+                <span className="text-body-sm font-mono text-ink">{link.label}</span>
+                <span className="break-words text-body-sm font-mono text-ink-muted group-hover:text-accent">
+                  {link.value}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

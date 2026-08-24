@@ -5,12 +5,14 @@ interface SectionHeaderProps {
 
 export default function SectionHeader({ number, label }: SectionHeaderProps) {
   return (
-    <header className="mb-12 flex items-center gap-4" aria-label={label}>
-      <span aria-hidden="true" className="text-label font-mono text-accent">
+    <header
+      className="mb-10 flex items-baseline gap-4 border-b border-ink-line pb-5"
+      aria-label={label}
+    >
+      <span aria-hidden="true" className="text-body-sm font-mono text-accent">
         {number}
       </span>
-      <span className="text-label font-mono uppercase tracking-widest text-ink-muted">{label}</span>
-      <div aria-hidden="true" className="h-px flex-1 bg-ink-line" />
+      <h2 className="font-serif text-display-md leading-none text-ink">{label}</h2>
     </header>
   )
 }

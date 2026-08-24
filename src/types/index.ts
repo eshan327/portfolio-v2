@@ -16,14 +16,11 @@ export interface Project {
   index: string
   category: string
   nameLines: string[]
-  italicLine?: number
   proof: string
   stack: string[]
   link?: ProjectLink
   status?: string
 }
-
-export type ContactIconName = 'mail' | 'phone' | 'linkedin' | 'github'
 
 export interface ContactLink {
   id: string
@@ -31,7 +28,6 @@ export interface ContactLink {
   value: string
   href: string
   external: boolean
-  icon: ContactIconName
 }
 
 export interface HeroActionLink {

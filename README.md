@@ -17,4 +17,3 @@ Run `npm run verify` before deployment.
 - Projects: `src/data/projects.ts`
 - Skills: `src/data/skills.ts`
 - Contact and metadata: `src/data/contact.ts`, `src/lib/constants.ts`
-- Résumé: `public/resume.pdf`
