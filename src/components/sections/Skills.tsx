@@ -6,7 +6,7 @@ export default function Skills() {
     <section
       id="skills"
       aria-label="Toolkit"
-      className="section px-7 py-section-y md:px-14"
+      className="px-7 py-section-y md:px-14"
     >
       <SectionHeader number="04" label="Toolkit" />
 

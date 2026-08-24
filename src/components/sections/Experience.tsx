@@ -6,7 +6,7 @@ export default function Experience() {
     <section
       id="experience"
       aria-label="Experience"
-      className="section px-7 py-section-y md:px-14"
+      className="px-7 py-section-y md:px-14"
     >
       <SectionHeader number="02" label="Experience" />
 
@@ -21,7 +21,7 @@ export default function Experience() {
         {EXPERIENCE.map(item => (
           <article
             key={item.company}
-            className="exp-item grid gap-5 border-b border-ink-line py-7 last:border-b-0 lg:grid-cols-[1fr_1.2fr_0.8fr_1.2fr_1fr] lg:gap-8"
+            className="grid gap-5 border-b border-ink-line py-7 last:border-b-0 lg:grid-cols-[1fr_1.2fr_0.8fr_1.2fr_1fr] lg:gap-8"
           >
             <h3 className="font-serif text-display-md leading-tight text-ink">{item.company}</h3>
             <p className="text-body-sm font-mono leading-relaxed text-ink">

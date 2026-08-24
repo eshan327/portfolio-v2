@@ -11,10 +11,8 @@
   --font-serif: var(--font-dm-serif-display), Georgia, serif;
   --font-mono: var(--font-ibm-plex-mono), Menlo, monospace;
 
-  --text-tag: 10px;
   --text-label: 11px;
   --text-body-sm: 12px;
-  --text-body-xs: 12.5px;
   --text-body: 13px;
   --text-body-md: 14px;
   --text-display-sm: 22px;
@@ -26,8 +24,6 @@
   --text-fluid-contact: clamp(40px, 4.5vw, 64px);
 
   --spacing-section-y: 72px;
-  --spacing-skills-cat: 100px;
-  --spacing-skills-max: 860px;
 
   --duration-fast: 200ms;
 }
@@ -35,12 +31,6 @@
 html {
   scrollbar-gutter: stable;
   background-color: var(--color-paper);
-  overflow-x: clip;
-}
-
-body {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
   overflow-x: clip;
 }
 
@@ -82,26 +72,5 @@ section[id] {
 
   .link-inline:hover {
     color: var(--color-accent);
-  }
-
-  .link-actions-row {
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 1.25rem;
-    row-gap: 0.25rem;
-    border-top: 1px solid var(--color-ink-line);
-    padding-top: 0.75rem;
-  }
-
-  .status-inline {
-    margin-top: 1rem;
-    border-top: 1px solid var(--color-ink-line);
-    padding-top: 0.75rem;
-    color: var(--color-ink-muted);
-    font-family: var(--font-mono);
-    font-size: var(--text-label);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
   }
 }

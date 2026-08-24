@@ -26,11 +26,7 @@ export const viewport: Viewport = {
   themeColor: '#F5EFE3',
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${dmSerifDisplay.variable} ${ibmPlexMono.variable}`}>
       <body className="min-h-screen bg-paper font-mono text-ink antialiased">

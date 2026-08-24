@@ -1,6 +1,4 @@
-import type { ExperienceItem } from '@/types'
-
-export const EXPERIENCE: ExperienceItem[] = [
+export const EXPERIENCE = [
   {
     company: 'IMC Trading',
     role: 'Quantitative Trader Intern',

@@ -6,7 +6,7 @@ export default function Contact() {
     <section
       id="contact"
       aria-label="Contact"
-      className="section px-7 py-section-y md:px-14"
+      className="px-7 py-section-y md:px-14"
     >
       <SectionHeader number="05" label="Contact" />
 

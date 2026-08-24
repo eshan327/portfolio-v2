@@ -1,6 +1,4 @@
-import type { SkillRow } from '@/types'
-
-export const SKILLS: SkillRow[] = [
+export const SKILLS = [
   {
     category: 'Core',
     skills: 'Python, C++, Java, TypeScript, SQL, Rust',

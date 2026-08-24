@@ -1,20 +1,20 @@
-import { HERO_ACTION_LINKS } from '@/data/contact'
+import { CONTACT_LINKS } from '@/data/contact'
 
 export default function Hero() {
   return (
     <section
       id="overview"
       aria-label="Overview"
-      className="hero px-7 pb-4 pt-36 md:px-14 md:pb-8 md:pt-44"
+      className="px-7 pb-4 pt-36 md:px-14 md:pb-8 md:pt-44"
     >
-      <div className="hero-top grid gap-16 lg:grid-cols-2 lg:items-end lg:gap-24">
+      <div className="grid gap-16 lg:grid-cols-2 lg:items-end lg:gap-24">
         <div className="space-y-9">
           <h1 className="whitespace-nowrap font-serif text-fluid-hero leading-none text-ink">
             Eshan Khan
           </h1>
 
           <div className="flex max-w-[520px] flex-wrap items-center gap-x-7 border-t border-ink-line pt-3">
-            {HERO_ACTION_LINKS.map(link => (
+            {CONTACT_LINKS.filter(link => link.label !== 'Phone').map(link => (
               <a
                 key={link.label}
                 href={link.href}
