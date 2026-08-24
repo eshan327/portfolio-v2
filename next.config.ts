@@ -1,22 +1,6 @@
 import type { NextConfig } from 'next'
 
 const config: NextConfig = {
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'eshankhan.vercel.app',
-          },
-        ],
-        destination: 'https://eshankhan.dev/:path*',
-        permanent: true,
-      },
-    ]
-  },
-
   async headers() {
     const scriptSrc = [
       "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
