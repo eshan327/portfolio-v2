@@ -1,6 +1,6 @@
 # Eshan Khan Portfolio
 
-Next.js 16, TypeScript, and Tailwind CSS portfolio.
+Next.js 16, TypeScript, and CSS portfolio.
 
 ## Development
 
@@ -9,11 +9,13 @@ npm install
 npm run dev
 ```
 
-Run `npm run verify` before deployment.
+Install the browser once with `npx playwright install chromium`, then run
+`npm run verify` before deployment. Verification runs lint, the production build,
+and a browser smoke test. `npm test` runs the smoke test against the existing build
+and starts its own local server on port 3100.
 
 ## Content
 
 - Experience: `src/data/experience.ts`
 - Projects: `src/data/projects.ts`
-- Skills: `src/data/skills.ts`
-- Contact and metadata: `src/data/contact.ts`, `src/lib/constants.ts`
+- Contact and metadata: `src/lib/constants.ts`

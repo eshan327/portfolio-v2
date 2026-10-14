@@ -1,13 +1,13 @@
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
+import { Geist } from 'next/font/google'
 
-import Footer from '@/components/layout/Footer'
-import Nav from '@/components/layout/Nav'
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/constants'
-import { dmSerifDisplay, ibmPlexMono } from '@/lib/fonts'
 
 import './globals.css'
+
+const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -23,25 +23,14 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#F5EFE3',
+  themeColor: '#F2F4F3',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${dmSerifDisplay.variable} ${ibmPlexMono.variable}`}>
-      <body className="min-h-screen bg-paper font-mono text-ink antialiased">
-        <a
-          href="#content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[9999] focus:border focus:border-ink-line focus:bg-paper focus:px-4 focus:py-2 focus:text-label focus:uppercase focus:tracking-widest focus:text-ink"
-        >
-          Skip to content
-        </a>
-
-        <Nav />
-
+    <html lang="en" className={geist.variable}>
+      <body>
         {children}
-
-        <Footer />
         <Analytics />
         <SpeedInsights />
       </body>
